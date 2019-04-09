@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib import  auth
 from django.contrib.auth.decorators import login_required
-from sign.models import Event
+from sign.models import *
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 # Create your views here.
 import pymysql
 connection = pymysql.connect(host='127.0.0.1',
@@ -48,8 +49,31 @@ def search_name(request):
     username=request.session.get('user','')
     search_name=request.GET.get('name','')
     
-    event_list=Event.objects.filter(address__contains=search_name)
+    cursor.execute('''
+    select * from sign_event where name like "%'''
+    +search_name+
+    '''%" 
+    ''')
+    event_list=cursor.fetchall()
+
     return render(request,'event_manage.html',{
         'username':username,
         'event_list':event_list
+    })
+
+@login_required
+def guest_manage(request):
+    username=request.session.get('user','')
+    guest_list = Guest.objects.all()
+    paginator=Paginator(guest_list,2)
+    page=request.GET.get('page')
+    try:
+        contacts=paginator.page(page)
+    except PageNotAnInteger:
+        contacts=paginator.page(1)
+    except EmptyPage:
+        contacts=paginator.page(paginator.num_pages)
+    return render(request,'guest_manage.html',
+    {'username':username,
+     'guests':contacts
     })
