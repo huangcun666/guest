@@ -4,7 +4,10 @@ from django.contrib import  auth
 from django.contrib.auth.decorators import login_required
 from sign.models import *
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+from sign.tasks import add
+from guest.celery import app
 # Create your views here.
+import time
 import pymysql
 connection = pymysql.connect(host='127.0.0.1',
 user='root',
@@ -13,8 +16,10 @@ db='guest',
 charset='utf8mb4',
 cursorclass=pymysql.cursors.DictCursor)
 cursor=connection.cursor()
+
 def index(request):
-    return render(request,'index.html')
+    s=add.delay(10,6)
+    return render(request,'index.html',{'s':s.get()})
 
 def login_action(request):
     if request.method=='POST':

@@ -1,0 +1,12 @@
+4357:C 10 Jul 10:42:08.646 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+4357:C 10 Jul 10:42:08.646 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=4357, just started
+4357:C 10 Jul 10:42:08.646 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+4357:M 10 Jul 10:42:08.648 # Creating Server TCP listening socket *:6379: bind: Address already in use
+4386:C 10 Jul 10:42:13.084 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+4386:C 10 Jul 10:42:13.084 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=4386, just started
+4386:C 10 Jul 10:42:13.084 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+4386:M 10 Jul 10:42:13.087 # Creating Server TCP listening socket *:6379: bind: Address already in use
+4455:C 10 Jul 10:42:24.804 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+4455:C 10 Jul 10:42:24.804 # Redis version=4.0.9, bits=64, commit=00000000, modified=0, pid=4455, just started
+4455:C 10 Jul 10:42:24.804 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+4455:M 10 Jul 10:42:24.805 # Creating Server TCP listening socket *:6379: bind: Address already in use
