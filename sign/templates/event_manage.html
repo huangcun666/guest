@@ -39,7 +39,74 @@
 </tbody>
 </table>
 </div>
+
+    
 </div>
 {%endblock%}
 
-  
+{%block script%}
+<div id="app">
+        <h1>库存信息</h1>
+        {% verbatim %} 
+        <ul>
+        <li v-for="product in products">
+            {{product.name}}-
+            <input type="text" v-model.number="product.quantity">
+            
+            <span v-if="product.quantity==0">
+                已经售空
+            </span>
+            <button @click="product.quantity+=1">增加库存</button>
+
+        </li>
+        </ul>
+        <button v-on:click="bb">点击</button>
+        <h2>库存总量:{{totalQuantity}}台</h2>
+        {% endverbatim %}
+        </ul>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                products:[
+                {"id":1,"name":'iPhoe X',"quantity":20,},
+                {"id":2,"name":'华为',"quantity":0},
+                {"id":3,"name":'小米 Mix3',"quantity":20}
+                ]
+            },
+            computed:{
+                totalQuantity(){
+                    return this.products.reduce((sum,product)=>{
+                        return sum+product.quantity
+                    },0);
+                }
+            },
+            methods:{
+
+                bb:function(){
+                    sum_kc=this.products[0].quantity
+                    $.get('/event_manage/',{
+                        'sum_kc':sum_kc
+                    },function (data) { 
+                        location.reload()
+                     })
+                }
+            }
+        });
+    </script>
+<script>
+
+$(function () {
+    $("#dd").click(function () { 
+      
+    alert('{{totalQuantity}}') 
+
+
+     })
+
+ })
+</script>
+{%endblock%}  

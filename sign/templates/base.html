@@ -1,8 +1,8 @@
 <html lang="zh-CN">
 <head>
-{% load bootstrap3 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
+
+<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
 <title>Guest Manage</title>
 </head>
 <body role="document">
@@ -27,5 +27,14 @@
 {% block body %}
 
 {%endblock%}
+
+<script src="/static/js/jquery-3.4.1.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<!-- <script src="static/js/vue.js"></script> -->
+{%block script%}
+
+{%endblock%}
     </body>
+
+
     </html>

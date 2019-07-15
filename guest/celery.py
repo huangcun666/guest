@@ -17,3 +17,4 @@ CELERYBEAT_SCHEDULE = {
     },
 }
 )
+#定时任务

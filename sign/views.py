@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,render_to_response
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib import  auth
 from django.contrib.auth.decorators import login_required
@@ -9,6 +9,7 @@ from guest.celery import app
 # Create your views here.
 import time
 import pymysql
+
 connection = pymysql.connect(host='127.0.0.1',
 user='root',
 password='123',
@@ -17,9 +18,13 @@ charset='utf8mb4',
 cursorclass=pymysql.cursors.DictCursor)
 cursor=connection.cursor()
 
+# 404
+def page_not_found(request,exception):
+    return render(request,'404.html')
+
 def index(request):
-    s=add.delay(10,6)
-    return render(request,'index.html',{'s':s.get()})
+
+    return render(request,'index.html')
 
 def login_action(request):
     if request.method=='POST':
@@ -43,6 +48,8 @@ def event_manage(request):
     cursor.execute('''
     select * from sign_event
     ''')
+    s=request.GET.get('sum_kc','')
+    print(s)
     event_list=cursor.fetchall()
     username=request.session.get('user','')
     return render(request,'event_manage.html',

@@ -27,9 +27,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ieyg^oc((r^qt7273=n1wlv(2xc6^%g_!c28qeold+i5vm%n@s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
 
 ALLOWED_HOSTS = []
+#自定义404页面
+# DEBUG = False
+
+# ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -131,3 +136,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = (
+    ('js',os.path.join(STATIC_ROOT,'js').replace('\\','/') ),
+    ('css',os.path.join(STATIC_ROOT,'css').replace('\\','/') ),
+
+)
