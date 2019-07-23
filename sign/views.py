@@ -23,7 +23,6 @@ def page_not_found(request,exception):
     return render(request,'404.html')
 
 def index(request):
-
     return render(request,'index.html')
 
 def login_action(request):
@@ -41,6 +40,9 @@ def login_action(request):
         else:
             return render(request,'index.html',
             {'error':'username or password error'})
+
+def example(request):
+    return render(request,'example.html')
 
 @login_required
 def event_manage(request):

@@ -57,9 +57,11 @@
                 已经售空
             </span>
             <button @click="product.quantity+=1">增加库存</button>
+            <button v-on:click="commit" id="f">提交</button>
 
         </li>
         </ul>
+
         <button v-on:click="bb">点击</button>
         <h2>库存总量:{{totalQuantity}}台</h2>
         {% endverbatim %}
@@ -93,6 +95,9 @@
                     },function (data) { 
                         location.reload()
                      })
+                },
+                commit:function(){
+                    alert($(this).attr('id'))
                 }
             }
         });
