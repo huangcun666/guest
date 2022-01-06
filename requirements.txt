@@ -6,7 +6,7 @@ astroid==2.2.5
 billiard==3.6.1.0
 blinker==1.4
 Brlapi==0.6.7
-celery==4.3.0
+celery==5.2.2
 certifi==2018.8.24
 chardet==3.0.4
 command-not-found==0.3
